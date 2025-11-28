@@ -1,37 +1,27 @@
 import csv
+import random
 
-data = [
-    {'name': 'Nikhil', 'branch': 'COE', 'year': 2, 'cgpa': 9.0},
-    {'name': 'Sanchit', 'branch': 'COE', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Aditya', 'branch': 'IT', 'year': 2, 'cgpa': 9.3},
-    {'name': 'Sagar', 'branch': 'SE', 'year': 1, 'cgpa': 9.5},
-    {'name': 'Prateek', 'branch': 'MCE', 'year': 3, 'cgpa': 7.8},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1},
-    {'name': 'Sahil', 'branch': 'EP', 'year': 2, 'cgpa': 9.1}
-]
+names = ['Nikhil', 'Sanchit', 'Aditya', 'Sagar', 'Prateek']
+branches = ['COE', 'IT', 'SE', 'MCE']
+years = [1, 2, 3, 4]
+cgpas = [7.8, 8.5, 9.0, 9.1, 9.3, 9.5]
+
 
 with open('university_records.csv', 'w', newline='') as csvfile:
     fieldnames = ['name', 'branch', 'year', 'cgpa']
     writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
     writer.writeheader()
-    writer.writerows(data)
 
-    import csv
-with open('university_records.csv', mode ='r') as file:    
-       csvFile = csv.DictReader(file)
-       for lines in csvFile:
-            print(lines)
+    for _ in range(20):  
+        row = {
+            'name': random.choice(names),
+            'branch': random.choice(branches),
+            'year': random.choice(years),
+            'cgpa': random.choice(cgpas)
+        }
+        writer.writerow(row)
+
+with open('university_records.csv', mode='r') as file:
+    csvFile = csv.DictReader(file)
+    for line in csvFile:
+        print(line)
