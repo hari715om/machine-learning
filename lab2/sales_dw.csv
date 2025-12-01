@@ -1,0 +1,5 @@
+order_id,customer,amount,city
+1,C1,500.0,Delhi
+2,C2,1200.5,Mumbai
+3,C1,300.0,Delhi
+4,C3,750.0,Bengaluru
